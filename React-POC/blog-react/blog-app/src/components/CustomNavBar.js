@@ -55,7 +55,7 @@ const CustomNavBar = () =>{
               </UncontrolledDropdown>
             </Nav>
             <NavbarText>Simple Text</NavbarText>
-          </Collapse>
+           </Collapse>
         </Navbar>
       </div>
     );  
