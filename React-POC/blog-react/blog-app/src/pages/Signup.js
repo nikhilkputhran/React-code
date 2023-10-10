@@ -10,6 +10,7 @@ import {
   Button,
   Row,
   Col,
+  FormFeedback,
 } from "reactstrap";
 import Base from "../components/Base";
 import { useEffect, useState } from "react";
@@ -46,6 +47,7 @@ const Signup = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+   
     signUp(data).then((response)=>{
       console.log(response);
       console.log("Success");
@@ -55,6 +57,11 @@ const Signup = () => {
       console.log(error);
       console.log("Failure");
       toast.error("Unfortunatly the user was not registered")
+      setError({
+        errors: error,
+        isError:true
+      })
+
     })
     console.log(data);
   };
@@ -89,7 +96,11 @@ const Signup = () => {
                       placeholder="Enter UserName"
                       onChange={(e) => handleEventChange(e)}
                       value = {data.name}
+                      invalid={error.errors?.response?.data?.name?true:false}
                     ></Input>
+                    <FormFeedback>
+                      {error.errors?.response?.data?.name}
+                    </FormFeedback>
                   </FormGroup>
                   <FormGroup>
                     <Label for="email">Email</Label>
@@ -100,7 +111,11 @@ const Signup = () => {
                       placeholder="Enter Email"
                       onChange={(e) => handleEventChange(e)}
                       value = {data.email}
-                    ></Input>
+                      invalid={error.errors?.response?.data?.email?true:false}
+                      ></Input>
+                      <FormFeedback>
+                        {error.errors?.response?.data?.email}
+                      </FormFeedback>
                   </FormGroup>
                   <FormGroup>
                     <Label for="password">Password</Label>
@@ -111,7 +126,11 @@ const Signup = () => {
                       placeholder="Enter Password"
                       onChange={(e) => handleEventChange(e)}
                       value = {data.password}
-                    ></Input>
+                      invalid={error.errors?.response?.data?.password?true:false}
+                      ></Input>
+                      <FormFeedback>
+                        {error.errors?.response?.data?.password}
+                      </FormFeedback>
                   </FormGroup>
                   <FormGroup>
                     <Label for="about">Tell Us About you</Label>
@@ -123,7 +142,11 @@ const Signup = () => {
                       onChange={(e) => handleEventChange(e)}
                       value = {data.about}
                       style={{ height: "250px" }}
-                    ></Input>
+                      invalid={error.errors?.response?.data?.about?true:false}
+                      ></Input>
+                      <FormFeedback>
+                        {error.errors?.response?.data?.about}
+                      </FormFeedback>
                   </FormGroup>
                   <Container>
                     <Button color="dark" >
