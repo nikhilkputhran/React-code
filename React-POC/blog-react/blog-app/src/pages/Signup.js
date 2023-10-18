@@ -23,16 +23,14 @@ const Signup = () => {
       email: "",
       password: "",
       about: ""
-    },
-    {}
+    }
   );
 
   const [error, setError] = useState(
     {
       errors: {},
       isError: false,
-    },
-    {}
+    }
   );
 
   useEffect(()=>{
@@ -42,7 +40,7 @@ const Signup = () => {
   
   const handleEventChange = (event) => {
     setData({ ...data, [ event.target.name]: event.target.value });
-  //  console.log(data);
+  // console.log(data);
   };
 
   const handleSubmit = (event) => {
@@ -53,6 +51,7 @@ const Signup = () => {
       console.log("Success");
       toast.success("User is registered Successfully")
       {handleReset()}
+      {resetError()}
     }).catch((error)=>{
       console.log(error);
       console.log("Failure");
@@ -72,6 +71,13 @@ const Signup = () => {
       email: "",
       password: "",
       about: ""
+    })
+  }
+
+  const resetError =() =>{
+    setError({
+      errors: {},
+      isError: false,
     })
   }
 
@@ -107,7 +113,7 @@ const Signup = () => {
                     <Input
                       id="email"
                       name="email"
-                      type="text"
+                      type="email"
                       placeholder="Enter Email"
                       onChange={(e) => handleEventChange(e)}
                       value = {data.email}
