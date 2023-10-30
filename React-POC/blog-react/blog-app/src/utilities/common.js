@@ -9,14 +9,20 @@ export const isLoggedIn = ()  =>{
     else return false;
 };
 
-export const logout=(action)=>{
+export const doLogout=(action)=>{
     localStorage.removeItem("login");
     action()
 }
 
 export const getUserDetails=()=>{
-    if(isLoggedIn){
-        return JSON.parse(localStorage.getItem("login"))
+    if(isLoggedIn()){
+        return JSON.parse(localStorage.getItem("login"))?.user;
     }
-    else return false;
+    else return undefined;
+}
+export const getToken=()=>{
+    if(isLoggedIn()){
+        return JSON.parse(localStorage.getItem("login"))?.token;
+    }
+    else return undefined;
 }

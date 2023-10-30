@@ -16,15 +16,17 @@ import { useEffect, useState } from "react";
 import {  toast } from 'react-toastify';
 import { loginUser } from "../utilities/user-services";
 import { login,isLoggedIn,logout,getUserDetails } from "../utilities/common";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+
+  const navigate=useNavigate();
 
   const [loginDetails, setLoginDetails] = useState(
     {
       userName: '',
       password: ''      
-    },
-    {}
+    }    
   );
   const [error, setError] = useState(
     {
@@ -61,6 +63,7 @@ const Login = () => {
       login(data,()=>{
         console.log("saved in local storage");
       })
+      navigate("/user/dashboard")
       console.log("Success");
       toast.success("User is logged in Successfully")
 

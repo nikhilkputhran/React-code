@@ -1,11 +1,11 @@
 import { myAxios } from "../constants/constants";
 
 export const signUp=(user)=>{
-    return myAxios.post('/api/v1/auth/register',user)
+    return myAxios.post('/auth/register',user)
     .then((response)=>response.data)
 }
 
 export const loginUser = (loginDetails)=>{
-    return myAxios.post('/api/v1/auth/login',loginDetails)
+    return myAxios.post('/auth/login',loginDetails)
     .then((response)=>response.data)
 }
