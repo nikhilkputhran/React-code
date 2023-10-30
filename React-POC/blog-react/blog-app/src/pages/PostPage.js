@@ -10,8 +10,7 @@ const PostPage=()=> {
 
     useEffect(()=>{
 
-        loadPost(postId).then((data)=>{
-            console.log(data)
+        loadPost(postId).then((data)=>{           
             setPost(data)          
         }).catch(error=>{
             console.log(error)

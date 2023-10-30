@@ -26,8 +26,7 @@ const NewFeed=()=> {
         if(pageNumber < postContent.pageNumber && postContent.pageNumber==0){
             return
         }
-        loadAllPosts(pageNumber,pageSize).then((data)=>{
-            console.log(data)
+        loadAllPosts(pageNumber,pageSize).then((data)=>{          
             setPostContent(data)
             window.scroll(0,0)
         }).catch(error=>{
@@ -55,8 +54,7 @@ const NewFeed=()=> {
             {
                 [...Array(postContent.totalPages)].map((item,index)=>(
                     <PaginationItem onClick={()=>changePage(index)} active={index==postContent.pageNumber} key={index}>
-                        <PaginationLink>
-                            {console.log(index)}
+                        <PaginationLink>                         
                             {index+1}
                         </PaginationLink>
 

@@ -28,8 +28,7 @@ const AddPost=()=> {
 
 useEffect(
     ()=>{
-        loadAllCategories().then((data)=>{
-            console.log("success")
+        loadAllCategories().then((data)=>{          
             setCategories(data)
             setUser(getUserDetails())
 
@@ -51,8 +50,7 @@ const contentFieldChange=(data)=>
 
 const createPost=(event)=>
 {
-    event.preventDefault();
-    console.log(post)
+    event.preventDefault();   
     if(post.title.trim()===''){
         toast.error("post title is required !!")
         return;

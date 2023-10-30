@@ -1,7 +1,14 @@
 import { privateAxios,myAxios } from "../constants/constants";
 
+import { getToken } from "../utilities/common";
+const token= getToken()
 export const createPost=(postData)=>{
-    return myAxios.post(`/user/${postData.userId}/category/${postData.categoryId}/posts`,postData)
+
+    return privateAxios.post(`/user/${postData.userId}/category/${postData.categoryId}/posts`,postData,{
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
     .then((response)=>response.data)
 }
 
