@@ -4,11 +4,13 @@ import { getToken } from "../utilities/common";
 const token= getToken()
 export const createPost=(postData)=>{
 
-    return privateAxios.post(`/user/${postData.userId}/category/${postData.categoryId}/posts`,postData,{
-        headers: {
-            'Authorization': `Bearer ${token}`
-        }
-    })
+    return privateAxios.post(`/user/${postData.userId}/category/${postData.categoryId}/posts`,postData
+    // {
+    //     headers: {
+    //         'Authorization': `Bearer ${token}`
+    //     }
+   // }
+    )
     .then((response)=>response.data)
 }
 
